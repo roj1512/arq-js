@@ -1,6 +1,6 @@
 import _fetch from 'node-fetch';
 
-export const fetch = async (url: string): Promise<object | string> => {
+export const fetch = async (url: string): Promise<any> => {
     const response = await _fetch(url);
 
     try {
