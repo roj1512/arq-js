@@ -5,7 +5,7 @@ JS Wrapper For the A.R.Q. API.
 ## Installation
 
 ```sh
-$ npm install arq
+$ npm install arq-js
 ```
 
 ## Usage example
@@ -13,11 +13,11 @@ $ npm install arq
 Get direct Deezer song link:
 
 ```js
-const { ARQ } = require("arq");
+const { ARQ } = require("arq-js");
 
 const arq = new ARQ("http://yourArqApi.com");
 
-arq.deezer("Ciao Bella").then(console.log);
+arq.deezer("Ciao Bella", 1).then(console.log);
 ```
 
 ## Documentation

@@ -13,8 +13,8 @@ class _ARQ {
      * @param query
      * @param limit
      */
-    async deezer(query: string, limit: number) {
-        return await fetch(`${this.arqApi}/deezer?${encode({ query, limit })}`);
+    async deezer(query: string, count: number) {
+        return await fetch(`${this.arqApi}/deezer?${encode({ query, count })}`);
     }
 
     /**
