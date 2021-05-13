@@ -1,0 +1,28 @@
+{
+  "name": "arq-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rojserbest/arqjs.git"
+  },
+  "author": "Roj Serbest <rojserbest@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rojserbest/arqjs/issues"
+  },
+  "homepage": "https://github.com/rojserbest/arqjs#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.10",
+    "typescript": "^4.2.4"
+  }
+}
