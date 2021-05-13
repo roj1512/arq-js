@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rojserbest/arqjs.git"
+    "url": "git+https://github.com/rojserbest/arq-js.git"
   },
   "author": "Roj Serbest <rojserbest@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rojserbest/arqjs/issues"
+    "url": "https://github.com/rojserbest/arq-js/issues"
   },
-  "homepage": "https://github.com/rojserbest/arqjs#readme",
+  "homepage": "https://github.com/rojserbest/arq-js",
   "dependencies": {
     "node-fetch": "^2.6.1"
   },
