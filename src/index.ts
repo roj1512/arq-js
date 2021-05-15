@@ -1,5 +1,6 @@
 import { encode } from 'querystring';
 import fetch from 'node-fetch';
+import * as t from './types';
 
 class _ARQ {
     url: string;
@@ -11,156 +12,147 @@ class _ARQ {
     }
 
     private async fetch(route: string, query: { [key: string]: any } = {}) {
-        const result = await (
-            await fetch(this.url + route + '?' + encode(query), {
-                headers: { 'x-api-key': this.key },
-            })
-        ).json();
-        if (result.ok) return result;
-        else throw new Error(result.result);
+        const response = await fetch(this.url + route + '?' + encode(query), {
+            method: 'GET',
+            headers: { 'x-api-key': this.key },
+        });
+
+        const { ok, result } = await response.json();
+
+        if (typeof ok === 'undefined' || typeof result == 'undefined') {
+            throw new Error('Invalid response');
+        }
+
+        if (ok) {
+            return result;
+        } else {
+            throw new Error(result);
+        }
     }
 
     /**
      * Search Deezer and get direct links to download songs.
-     * @param query
-     * @param limit
      */
-    async deezer(query: string, count: number) {
+    async deezer(query: string, count: number): Promise<t.DeezerResult> {
         return await this.fetch('deezer', { query, count });
     }
 
     /**
      * Search for Torrents across various websites.
-     * @param query
      */
-    async torrent(query: string) {
+    async torrent(query: string): Promise<t.TorrentResult> {
         return await this.fetch('torrent', { query });
     }
 
     /**
      * Get songs from Saavn.
-     * @param query
      */
-    async saavn(query: string) {
+    async saavn(query: string): Promise<t.SaavnResult> {
         return await this.fetch('saavn', { query });
     }
 
     /**
      * Get information about a Saavn playlist.
-     * @param query
      */
-    async saavnPlaylist(query: string) {
+    async saavnPlaylist(query: string): Promise<any> {
         return await this.fetch('saavnPlaylist', { query });
     }
 
     /**
      * Search for YouTube videos.
-     * @param query
      */
-    async youtube(query: string) {
+    async youtube(query: string): Promise<t.YouTubeResult> {
         return await this.fetch('youtube', { query });
     }
 
     /**
      * Search for wallpapares.
-     * @param query
      */
-    async wall(query: string) {
+    async wall(query: string): Promise<t.WallResult> {
         return await this.fetch('wall', { query });
     }
 
     /**
      * Search for Reddit posts.
-     * @param query
      */
-    async reddit(query: string) {
+    async reddit(query: string): Promise<t.RedditResult> {
         return await this.fetch('reddit', { query });
     }
 
     /**
      * Search the Urban dictionary.
-     * @param query
      */
-    async ud(query: string) {
+    async ud(query: string): Promise<t.UdResult> {
         return await this.fetch('ud', { query });
     }
 
     /**
      * Search for a PH video.
-     * @param query
      */
-    async ph(query: string) {
+    async ph(query: string): Promise<t.PhDlResult> {
         return await this.fetch('ph', { query });
     }
 
     /**
      * Download a PH video.
-     * @param query
      */
-    async phDownload(url: string) {
+    async phDownload(url: string): Promise<t.PhDlResult> {
         return await this.fetch('phdl', { url });
     }
 
     /**
      * Communicate with an AI chatbot.
-     * @param query
      */
-    async luna(query: string) {
+    async luna(query: string): Promise<t.LunaResult> {
         return await this.fetch('luna', { query });
     }
 
     /**
      * Get song lyrics.
-     * @param query
      */
-    async lyrics(query: string) {
+    async lyrics(query: string): Promise<t.LyricsResult> {
         return await this.fetch('lyrics', { query });
     }
 
     /**
      * Search Wikipeida.
-     * @param query
      */
-    async wiki(query: string) {
+    async wiki(query: string): Promise<t.WikiResult> {
         return await this.fetch('wiki', { query });
     }
 
     /**
      * Scan and classify an image.
-     * @param url
      */
-    async nsfwScan(url: string) {
+    async nsfwScan(url: string): Promise<t.NsfwScanResult> {
         return await this.fetch('nsfw_scan', { url });
     }
 
     /**
      * Recognize characters in an image.
-     * @param url
      */
-    async ocr(url: string) {
+    async ocr(url: string): Promise<t.OcrResult> {
         return await this.fetch('ocr', { url });
     }
 
     /**
      * Get stats of the ARQ API.
      */
-    async stats() {
+    async stats(): Promise<t.StatsResults> {
         return await this.fetch('stats');
     }
 
     /**
      * Generate a true random number using atmospheric noises.
-     * @param min
-     * @param max
      */
-    async random(min: number, max: number) {
+    async random(min: number, max: number): Promise<t.RandomResult> {
         return await this.fetch('stats', { min, max });
     }
 
     /**
      * Get a sock5 proxy.
      */
-    async proxy() {
+    async proxy(): Promise<t.ProxyResult> {
         return await this.fetch('proxy');
     }
 }
