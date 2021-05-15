@@ -17,6 +17,10 @@ class _ARQ {
             headers: { 'x-api-key': this.key },
         });
 
+        if (response.status == 403 || response.status == 401) {
+            throw new Error('Invalid API key');
+        }
+
         const { ok, result } = await response.json();
 
         if (typeof ok === 'undefined' || typeof result == 'undefined') {
