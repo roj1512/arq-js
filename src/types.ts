@@ -130,3 +130,17 @@ export interface ProxyResult {
     location: string;
     proxy: string;
 }
+
+export type TmdbResult = Array<{
+    id: number;
+    title: string;
+    overview: string;
+    rating: number | null;
+    releaseDate: string;
+    genre: Array<string>;
+    type: string;
+    backdrop: string;
+    poster: string;
+}>;
+
+export type QuotlyResult = string;

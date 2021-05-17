@@ -107,8 +107,8 @@ class _ARQ {
     /**
      * Communicate with an AI chatbot.
      */
-    async luna(query: string): Promise<t.LunaResult> {
-        return await this.fetch('luna', { query });
+    async luna(query: string, id: number): Promise<t.LunaResult> {
+        return await this.fetch('luna', { query, id });
     }
 
     /**
@@ -158,6 +158,20 @@ class _ARQ {
      */
     async proxy(): Promise<t.ProxyResult> {
         return await this.fetch('proxy');
+    }
+
+    /**
+     * Search movie database.
+     */
+    async tmdb(query: string): Promise<t.TmdbResult> {
+        return await this.fetch('tmdb', { query });
+    }
+
+    /**
+     * Generate Telegram quote stickers.
+     */
+    async quotly(payload: { [key: string]: any }): Promise<t.QuotlyResult> {
+        return await this.fetch('quotly', { payload: JSON.stringify(payload) });
     }
 }
 
