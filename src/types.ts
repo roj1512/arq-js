@@ -82,15 +82,31 @@ export type PhResult = Array<{
     title: string;
     duration: string;
     views: number;
-    raiting: string;
+    rating: string;
+    ratings: number;
+    uploaded: string;
     url: string;
-    category: Array<string>;
-    thumbnails: Array<string>;
+    type: string;
+    mainThumb: string;
+    categories: Array<string>;
+    tags: Array<string>;
+    pornstars: Array<string>;
+    thumbnails: Array<{
+        size: string;
+        width: string;
+        height: string;
+        src: string;
+    }>;
 }>;
 
 export interface PhDlResult {
-    requested_url: string;
-    video_url: string;
+    title: string;
+    thumbnail: string;
+    video: Array<{
+        quality: string;
+        url: string;
+        size: string;
+    }>;
 }
 
 export type LyricsResult = string;
