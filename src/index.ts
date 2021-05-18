@@ -93,8 +93,12 @@ class _ARQ {
     /**
      * Search for a PH video.
      */
-    async ph(query: string): Promise<t.PhDlResult> {
-        return await this.fetch('ph', { query });
+    async ph(
+        query: string,
+        page: number = 1,
+        thumbSize: string = 'small',
+    ): Promise<t.PhDlResult> {
+        return await this.fetch('ph', { query, page, thumbSize });
     }
 
     /**
