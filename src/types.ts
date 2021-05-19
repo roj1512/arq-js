@@ -160,3 +160,22 @@ export type TmdbResult = Array<{
 }>;
 
 export type QuotlyResult = string;
+
+export interface TranslateResult {
+    translatedText: string;
+    src: string;
+    dest: string;
+}
+
+export interface YouTubeDownloadResult {
+    id: string;
+    title: string;
+    duration: number;
+    thumbnail: string;
+    video: Array<{
+        size: string;
+        format: string;
+        quality: string;
+        url: string;
+    }>;
+}

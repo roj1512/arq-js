@@ -11,11 +11,25 @@ class _ARQ {
         this.key = key;
     }
 
-    async fetch(route: string, query: { [key: string]: any } = {}) {
-        const response = await fetch(this.url + route + '?' + encode(query), {
-            method: 'GET',
-            headers: { 'x-api-key': this.key },
-        });
+    async fetch(
+        route: string,
+        query: { [key: string]: any } = {},
+        post: boolean = false,
+    ) {
+        let response;
+
+        if (post) {
+            response = await fetch(this.url + route, {
+                method: 'POST',
+                headers: { 'x-api-key': this.key },
+                body: JSON.stringify(query),
+            });
+        } else {
+            response = await fetch(this.url + route + '?' + encode(query), {
+                method: 'GET',
+                headers: { 'x-api-key': this.key },
+            });
+        }
 
         if (response.status == 403 || response.status == 401) {
             throw new Error('Invalid API key');
@@ -175,7 +189,25 @@ class _ARQ {
      * Generate Telegram quote stickers.
      */
     async quotly(payload: { [key: string]: any }): Promise<t.QuotlyResult> {
-        return await this.fetch('quotly', { payload: JSON.stringify(payload) });
+        return await this.fetch(
+            'quotly',
+            { payload: JSON.stringify(payload) },
+            true,
+        );
+    }
+
+    /**
+     * Download a YouTube video.
+     */
+    async youtubeDownload(url: string): Promise<t.YouTubeDownloadResult> {
+        return await this.fetch('ytdl', { url });
+    }
+
+    async translate(
+        text: string,
+        destLangCode: string = 'en',
+    ): Promise<t.TranslateResult> {
+        return await this.fetch('translate', { text, destLangCode });
     }
 }
 
