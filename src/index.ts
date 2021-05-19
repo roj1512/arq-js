@@ -11,7 +11,7 @@ class _ARQ {
         this.key = key;
     }
 
-    private async fetch(route: string, query: { [key: string]: any } = {}) {
+    async fetch(route: string, query: { [key: string]: any } = {}) {
         const response = await fetch(this.url + route + '?' + encode(query), {
             method: 'GET',
             headers: { 'x-api-key': this.key },
