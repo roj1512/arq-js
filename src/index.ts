@@ -181,8 +181,8 @@ class _ARQ {
     /**
      * Search movie database.
      */
-    async tmdb(query: string): Promise<t.TmdbResult> {
-        return await this.fetch('tmdb', { query });
+    async tmdb(query: string, tmdbID: number = 0): Promise<t.TmdbResult> {
+        return await this.fetch('tmdb', { query, tmdbID });
     }
 
     /**
@@ -208,6 +208,10 @@ class _ARQ {
         destLangCode: string = 'en',
     ): Promise<t.TranslateResult> {
         return await this.fetch('translate', { text, destLangCode });
+    }
+
+    async pypi(query: string): Promise<t.PyPiResult> {
+        return await this.fetch('pypi', { query });
     }
 }
 

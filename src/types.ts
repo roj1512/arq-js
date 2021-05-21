@@ -179,3 +179,23 @@ export interface YouTubeDownloadResult {
         url: string;
     }>;
 }
+
+export interface PyPiResult {
+    name: string;
+    version: string;
+    license: string;
+    description: string | null;
+    size: string;
+    uploadTime: string;
+    author: string;
+    authorEmail: string;
+    keywords: string;
+    requirements: string[];
+    minPyVersion: string;
+    homepage: string | null;
+    bugTrackURL: string | null;
+    docsURL: string | null;
+    pypiURL: string;
+    releaseURL: string;
+    projectURLS: { [key: string]: string };
+}
