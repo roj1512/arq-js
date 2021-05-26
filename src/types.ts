@@ -1,8 +1,8 @@
 export type LunaResult = string;
 
-export type YouTubeResult = Array<{
+export type YouTubeResult = {
     id: string;
-    thumbnails: Array<string>;
+    thumbnails: string[];
     title: string;
     long_desc: string;
     channel: string;
@@ -10,18 +10,18 @@ export type YouTubeResult = Array<{
     views: string;
     publish_time: string;
     url_suffix: string;
-}>;
+}[];
 
-export type TorrentResult = Array<{
+export type TorrentResult = {
     name: string;
     uploaded: string;
     size: string;
     seeds: number;
     leechs: number;
     magnet: string;
-}>;
+}[];
 
-export type DeezerResult = Array<{
+export type DeezerResult = {
     id: number;
     title: string;
     source: string;
@@ -29,9 +29,9 @@ export type DeezerResult = Array<{
     thumbnail: string;
     artist: string;
     url: string;
-}>;
+}[];
 
-export type SaavnResult = Array<{
+export type SaavnResult = {
     song: string;
     album: string;
     year: string;
@@ -39,9 +39,9 @@ export type SaavnResult = Array<{
     image: string;
     duration: string;
     media_url: string;
-}>;
+}[];
 
-export type WallResult = Array<{
+export type WallResult = {
     id: string;
     width: string;
     file_type: string;
@@ -49,7 +49,7 @@ export type WallResult = Array<{
     url_image: string;
     url_thumb: string;
     url_page: string;
-}>;
+}[];
 
 export interface RedditResult {
     postLink: string;
@@ -60,14 +60,14 @@ export interface RedditResult {
     spoiler: false;
     author: string;
     ups: number;
-    preview: Array<string>;
+    preview: string[];
 }
 
-export type UdResult = Array<{
+export type UdResult = {
     definition: string;
     permalink: string;
     thumbs_up: number;
-    sound_urls: Array<number>;
+    sound_urls: number[];
     autho: string;
     word: string;
     defid: number;
@@ -75,9 +75,9 @@ export type UdResult = Array<{
     written_on: string;
     example: string;
     thumbs_down: number;
-}>;
+}[];
 
-export type PhResult = Array<{
+export type PhResult = {
     id: string;
     title: string;
     duration: string;
@@ -88,25 +88,25 @@ export type PhResult = Array<{
     url: string;
     type: string;
     mainThumb: string;
-    categories: Array<string>;
-    tags: Array<string>;
-    pornstars: Array<string>;
-    thumbnails: Array<{
+    categories: string[];
+    tags: string[];
+    pornstars: string[];
+    thumbnails: {
         size: string;
         width: string;
         height: string;
         src: string;
-    }>;
-}>;
+    }[];
+}[];
 
 export interface PhDlResult {
     title: string;
     thumbnail: string;
-    video: Array<{
+    video: {
         quality: string;
         url: string;
         size: string;
-    }>;
+    }[];
 }
 
 export type LyricsResult = string;
@@ -140,24 +140,22 @@ export interface StatsResults {
     python: string;
 }
 
-export type RandomResult = number;
-
-export interface ProxyResult {
+export type ProxyResult = {
     location: string;
     proxy: string;
-}
+}[];
 
-export type TmdbResult = Array<{
+export type TmdbResult = {
     id: number;
     title: string;
     overview: string;
     rating: number | null;
     releaseDate: string;
-    genre: Array<string>;
+    genre: string[];
     type: string;
     backdrop: string;
     poster: string;
-}>;
+}[];
 
 export type QuotlyResult = string;
 
@@ -172,12 +170,12 @@ export interface YouTubeDownloadResult {
     title: string;
     duration: number;
     thumbnail: string;
-    video: Array<{
+    video: {
         size: string;
         format: string;
         quality: string;
         url: string;
-    }>;
+    }[];
 }
 
 export interface PyPiResult {

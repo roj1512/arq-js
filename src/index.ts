@@ -165,13 +165,6 @@ class _ARQ {
     }
 
     /**
-     * Generate a true random number using atmospheric noises.
-     */
-    async random(min: number, max: number): Promise<t.RandomResult> {
-        return await this.fetch('stats', { min, max });
-    }
-
-    /**
      * Get a sock5 proxy.
      */
     async proxy(): Promise<t.ProxyResult> {
