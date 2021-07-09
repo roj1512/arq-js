@@ -158,8 +158,6 @@ export type TmdbResult = {
     poster: string;
 }[];
 
-export type QuotlyResult = string;
-
 export interface TranslateResult {
     translatedText: string;
     src: string;
@@ -197,4 +195,9 @@ export interface PyPiResult {
     pypiURL: string;
     releaseURL: string;
     projectURLS: { [key: string]: string };
+}
+
+export interface SpellCheckResult {
+    corrected: string;
+    corrections: { [key: string]: string };
 }

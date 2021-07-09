@@ -5,7 +5,7 @@ import * as t from './types';
 class ARQ {
     url: string;
     key: string;
- 
+
     constructor(url: string, key: string) {
         this.url = url.endsWith('/') ? url : url + '/';
         this.key = key;
@@ -195,6 +195,10 @@ class ARQ {
     async pypi(query: string): Promise<t.PyPiResult> {
         return await this.fetch('pypi', { query });
     }
+
+    async spellCheck(text: string): Promise<t.SpellCheckResult> {
+        return await this.fetch('spellcheck', { text });
+    }
 }
 
-export {ARQ};
+export { ARQ };
