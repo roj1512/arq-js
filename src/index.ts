@@ -51,7 +51,11 @@ class ARQ {
     /**
      * Search Deezer and get direct links to download songs.
      */
-    async deezer(query: string, count: number): Promise<t.DeezerResult> {
+    async deezer(
+        query: string,
+        count: number = 1,
+        format: number = 3,
+    ): Promise<t.DeezerResult> {
         return await this.fetch('deezer', { query, count });
     }
 
@@ -72,8 +76,8 @@ class ARQ {
     /**
      * Get information about a Saavn playlist.
      */
-    async saavnPlaylist(query: string): Promise<any> {
-        return await this.fetch('saavnPlaylist', { query });
+    async saavnPlaylist(url: string): Promise<any> {
+        return await this.fetch('saavnPlaylist', { url });
     }
 
     /**
