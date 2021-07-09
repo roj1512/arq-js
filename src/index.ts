@@ -2,10 +2,10 @@ import { encode } from 'querystring';
 import fetch from 'node-fetch';
 import * as t from './types';
 
-class _ARQ {
+class ARQ {
     url: string;
     key: string;
-
+ 
     constructor(url: string, key: string) {
         this.url = url.endsWith('/') ? url : url + '/';
         this.key = key;
@@ -179,17 +179,6 @@ class _ARQ {
     }
 
     /**
-     * Generate Telegram quote stickers.
-     */
-    async quotly(payload: { [key: string]: any }): Promise<t.QuotlyResult> {
-        return await this.fetch(
-            'quotly',
-            { payload: JSON.stringify(payload) },
-            true,
-        );
-    }
-
-    /**
      * Download a YouTube video.
      */
     async youtubeDownload(url: string): Promise<t.YouTubeDownloadResult> {
@@ -208,4 +197,4 @@ class _ARQ {
     }
 }
 
-export const ARQ = _ARQ;
+export {ARQ};

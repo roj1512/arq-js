@@ -28,6 +28,7 @@ export type DeezerResult = {
     duration: number;
     thumbnail: string;
     artist: string;
+    artistPictures: string[];
     url: string;
 }[];
 
